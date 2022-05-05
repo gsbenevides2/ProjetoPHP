@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+body{
+    font-family: 'Handlee', cursive;
+    background-color: darkgray;
+}
+.Principal{
+    width: 1000px;
+    height: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+.fonteT{
+    font-family: 'Handlee', cursive;
+}
+.fonteP{
+    font-family: 'Handlee', cursive;
+}
+@media (min-width:601px){
+    .Principal{
+        width: 1000px;
+        height: 800px;
+    }
+    .Parte_001{
+        height: 20px;
+        width: 100%;
+    }
+    .Parte_002{
+        height: 60px;
+        width: 850px;
+        margin-left: auto;
+    }
+    .Parte_003{
+        height: 180px;
+        width: 160px;
+        margin-left: 20px;
+        margin-top: -60px;
+    }
+    .Parte_004{
+        height: 80px;
+        width: 400px;
+        margin-left: 500px;
+        margin-top: -30px;
+        position: relative;
+    }
+    .Parte_005{
+        height: 300px;
+        width: 1000px;
+        margin-top: 50px;
+    }
+    .Parte_006{
+        position: relative;
+        height: 200px;
+        width: 200px;
+        margin-left: 750px;
+        margin-top: -30px;
+    }
+    .Parte_007{
+        height: 60px;
+        width: 400px;
+        margin-left: 50px;
+        margin-top: -60px;
+    }
+    .Parte_008{
+        height: 600px;
+        width: 550px;
+        margin-top: -100px;
+        margin-left: 0px;
+        position: relative;
+    }
+    .Parte_009{
+        height: 200px;
+        width: 600px;
+        margin-left: 400px;
+        margin-top: -100px;
+        position: relative;
+        font-size: 16pt;
+    }
+    .Parte_009Edificio{
+        height: 100%;
+        position: relative;
+        margin-top: 100px;
+    }
+    .Parte_010{
+        height: 120px;
+        width: 990px;
+        margin-left: auto;
+        margin-top: 30px;
+    }
+    .Parte_011{
+        height: 470px;
+        width: 600px;
+        margin-left: 0;
+        margin-top: 30px;
+    }
+    .Parte_012{
+        height: 490px;
+        width: 360px;
+        margin-left: 630px;
+        margin-top: -400px;
+    }
+    .Parte_013{
+        height: 250px;
+        width: 250px;
+        margin-left: auto;
+        margin-top: -125px;
+    }
+    .Parte_014{
+        margin-left: auto;
+        margin-right: auto;
+        height: 300px;
+        width: 300px;
+        margin-top: -100px;
+    }
+    .Parte_015{
+        height: 300px;
+        width: 800px;
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-top: -50px;
+    }
+    .Parte_016{
+        margin-top: 100px;
+        text-align: right;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .Parte_017{
+        margin-top: 100px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+@media (min-width:100px) and (max-width:600px) {
+    .Principal{
+        width: 360px;
+        height: 640px;
+    }
+    .Parte_001{
+        height: 20px;
+        width: 360px;
+    }
+    .Parte_002{
+        height: 40px;
+        width: 300px;
+        margin-left: 60px;
+    }
+    .Parte_003{
+        height: 90px;
+        width: 90px;
+        margin-left: 0px;
+        margin-top: -40px;
+    }
+    .Parte_004{
+        height: 80px;
+        width: 330px;
+        margin-left: 15px;
+        margin-top: 20px;
+    }
+    .Parte_005{
+        height: 300px;
+        width: 380px;
+        margin-top: 60px;
+    }
+    .Parte_006{
+        position: relative;
+        height: 150px;
+        width: 150px;
+        margin-left: 230px;
+        margin-top: -160px;
+    }
+    .Parte_007{
+        height: 40px;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    .Parte_008{
+        width: 280px;
+        height: 320px;
+        margin-left: 80px;
+    }
+    .Parte_009{
+        width: 280px;
+        height: 320px;
+        margin-left: 80px;
+    }
+    .Parte_009Edificio{
+        width: 280px;
+        height: 400px;
+        left: 80px;
+        margin-top: -80px;
+    }
+    .Parte_010{
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .Parte_011{
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .Parte_012{
+        height: 40px;
+        width: 40px;
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .Parte_013{
+        height: 120px;
+        width: 120px;
+        margin-top: 10px;
+        margin-left: auto;
+    }
+    .Parte_014{
+        height: 60px;
+        width: 60px;
+        margin-top: 10px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .Parte_016{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 40px;
+        text-align: right;
+    }
+    .Parte_017{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 40px;
+    }
+    }
