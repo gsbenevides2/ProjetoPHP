@@ -1,6 +1,7 @@
 <html>
 <?php
 include_once "genero.php";
+include_once "usuario.php";
 class Anime
 {
     // Propriedades
@@ -9,6 +10,7 @@ class Anime
     private $dt_nascimento;
     private $classificacao_indicativa;
     private $genero;
+    private $usuario;
     private $autor;
     private $quantidade_episodios;
     private $quantidade_temporadas;
@@ -17,6 +19,7 @@ class Anime
     public function __construct()
     {
         $this->genero = new Genero();
+        $this->usuario = new Usuario();
     }
 
     //Métodos Get
@@ -39,6 +42,10 @@ class Anime
     public function getGenero()
     {
         return $this->genero;
+    }
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
     public function getAutor()
     {
@@ -72,6 +79,10 @@ class Anime
     public function setGenero($valor)
     {
         $this->genero = $valor;
+    }
+    public function setUsuario($valor)
+    {
+        $this->usuario = $valor;
     }
     public function setAutor($valor)
     {
