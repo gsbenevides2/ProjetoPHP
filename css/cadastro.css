@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+
+* {
+  font-family: "Handlee", cursive;
+}
+
+body {
+  background-color: darkgray;
+}
+
+.navbar-collapse.show > .d-flex,
+.navbar-collapse.collapsing > .d-flex {
+  display: block !important;
+  text-align: center;
+}
