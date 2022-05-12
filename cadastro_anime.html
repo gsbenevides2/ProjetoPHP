@@ -28,8 +28,8 @@
   </head>
 
   <body>
-    <div class="container-lg">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-lg bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
           <a href="/" class="navbar-brand d-flex flex-column">
             <img
@@ -71,6 +71,65 @@
           </div>
         </div>
       </nav>
+      <div class="container">
+        <h1 class="text-center">Cadastro de Animes</h1>
+        <form action="">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="name" />
+          </div>
+          <div class="mb-3">
+            <label for="dt-lancamento" class="form-label">
+              Data de Lançamento:
+            </label>
+            <input type="datetime" class="form-control" id="dt-lancamento" />
+          </div>
+          <div class="mb-3">
+            <label for="classificacao-indicativa" class="form-label">
+              Classificação indicativa:
+            </label>
+            <input
+              type="number"
+              class="form-control"
+              id="classificacao-indicativa"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="id_genero" class="form-label"> Gênero: </label>
+            <select class="form-select" id="id_genero">
+              <option selected disabled>Escolha uma opção:</option>
+              <option value="1">Romance</option>
+              <option value="2">Terror</option>
+              <option value="3">Guerra</option>
+              <option value="4">Echi</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="autor" class="form-label"> Autor: </label>
+            <input type="text" class="form-control" id="autor" />
+          </div>
+          <div class="mb-3">
+            <label for="quantidade-episodios" class="form-label">
+              Quantidade de Episódios:
+            </label>
+            <input
+              type="number"
+              class="form-control"
+              id="quantidade-episodios"
+            />
+          </div>
+          <div class="mb-3 pb-3">
+            <label for="quantidade-temporadas" class="form-label">
+              Quantidade de Temporadas:
+            </label>
+            <input
+              type="number"
+              class="form-control"
+              id="quantidade-temporadas"
+            />
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
