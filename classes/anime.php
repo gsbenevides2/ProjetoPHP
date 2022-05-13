@@ -14,6 +14,7 @@ class Anime
     private $autor;
     private $quantidade_episodios;
     private $quantidade_temporadas;
+    private $ytId;
 
     //metodo construtor
     public function __construct()
@@ -59,6 +60,11 @@ class Anime
     {
         return $this->quantidade_temporadas;
     }
+    public function getYtId()
+    {
+        return $this->ytId;
+    }
+
     // Métodos Set
     public function setIdAnime($valor)
     {
@@ -95,6 +101,10 @@ class Anime
     public function setQuantidadeTemporadas($valor)
     {
         $this->quantidade_temporadas = $valor;
+    }
+    public function setYtId($valor)
+    {
+        $this->ytId = $valor;
     }
 }
 

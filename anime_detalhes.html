@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro de Animes</title>
-    <link rel="shortcut icon" href="media/nezuko.jpg" />
+    <title>86 Eighty-Six</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     <!-- CSS only -->
     <link
@@ -23,12 +23,11 @@
     ></script>
 
     <!-- Link CSS de Formatação -->
-    <!--link rel="stylesheet" href="css/formatacao.css" /-->
-    <link rel="stylesheet" href="css/cadastro.css" />
+    <link rel="stylesheet" href="css/estilos globais.css" />
   </head>
 
   <body>
-    <div class="container-lg bg-light ">
+    <div class="container-lg bg-light">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
           <a href="/" class="navbar-brand d-flex flex-column">
@@ -72,18 +71,32 @@
         </div>
       </nav>
       <div class="container">
-        <h2>Anime:</h2>
-        <p></p>
-        <h2>Episódio:</h2>
-        <p></p>
-        <h2>Temporadas:</h2>
-        <p></p>
-        <h2>Gênero:</h2>
-        <p></p>
-        <h2>Data de lançamento:</h2>
-        <p></p>
-        <h2>Classificação indicativa:</h2>
-        <p></p>
+        <div class="row">
+          <iframe
+            class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3"
+            style="min-height: 400px"
+            src="https://www.youtube.com/embed/tA0EEJj4hU0"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <h2>86 Eighty-Six</h2>
+            <span><b>Gênero:</b> Ação</span><br />
+            <span><b>Data de Lançamento:</b> 11 de Abril de 2021</span><br />
+            <span><b>Quantidade de Temporadas:</b> 2</span><br />
+            <span><b>Quantidade de Episódios:</b> 24</span><br />
+            <span><b>Classificação Indicativa:</b> +16</span>
+            <div class="text-end">
+              <button type="button" class="btn btn-outline-dark">Editar</button>
+              <button type="button" class="btn btn-outline-danger">
+                Deletar
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
