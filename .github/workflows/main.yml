@@ -14,4 +14,4 @@ jobs:
         server: files.000webhost.com
         username: gsbenevides2
         password: ${{ secrets.ftp_password }}
-        server-dir: ./public_html
+        server-dir: ./public_html/
