@@ -4,8 +4,51 @@
   font-family: "Handlee", cursive;
 }
 
-body {
-  background-color: darkgray;
+.background-changer {
+  height: 100vh;
+  position: fixed;
+  width: 100vw;
+  background-image: url("/media/background.webp");
+  filter: blur(12px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: background-change 12s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  position: fixed;
+}
+.page-content {
+  position: relative;
+}
+
+@keyframes background-change {
+  0% {
+    background-image: url("/media/background.webp");
+  }
+  11% {
+    background-image: url("/media/background2.webp");
+  }
+  22% {
+    background-image: url("/media/background3.webp");
+  }
+  33% {
+    background-image: url("/media/background4.webp");
+  }
+  44% {
+    background-image: url("/media/background5.webp");
+  }
+  55% {
+    background-image: url("/media/background6.webp");
+  }
+  66% {
+    background-image: url("/media/background7.webp");
+  }
+  77% {
+    background-image: url("/media/background8.webp");
+  }
+  88% {
+    background-image: url("/media/background9.webp");
+  }
 }
 
 .navbar-collapse.show > .d-flex,
