@@ -2,113 +2,142 @@
 <?php
 include_once "genero.php";
 include_once "usuario.php";
+require_once "db.php";
 class Anime
 {
     // Propriedades
-    private $id_anime;
-    private $nome;
-    private $dt_nascimento;
-    private $classificacao_indicativa;
-    private $genero;
-    private $usuario;
-    private $autor;
-    private $quantidade_episodios;
-    private $quantidade_temporadas;
-    private $ytId;
+    private $anim_id;
+    private $anim_nome;
+    private $anim_dt_nascimento;
+    private $anim_classificacao_indicativa;
+    private $anim_genero;
+    private $anim_usuario;
+    private $anim_autor;
+    private $anim_quantidade_episodios;
+    private $anim_quantidade_temporadas;
+    private $anim_ytId;
 
     //metodo construtor
     public function __construct()
     {
-        $this->genero = new Genero();
-        $this->usuario = new Usuario();
+        $this->anim_genero = new Genero();
+        $this->anim_usuario = new Usuario();
     }
 
     //Métodos Get
-    public function getIdAnime()
+    public function getAnimId()
     {
-        return $this->id_anime;
+        return $this->anim_id;
     }
-    public function getNome()
+    public function getAnimNome()
     {
-        return $this->nome;
+        return $this->anim_nome;
     }
-    public function getDtNascimento()
+    public function getAnimDtNascimento()
     {
-        return $this->dt_nascimento;
+        return $this->anim_dt_nascimento;
     }
-    public function getClassificacaoIndicativa()
+    public function getAnimClassificacaoIndicativa()
     {
-        return $this->classificacao_indicativa;
+        return $this->anim_classificacao_indicativa;
     }
-    public function getGenero()
+    public function getAnim_Genero()
     {
-        return $this->genero;
+        return $this->anim_genero;
     }
-    public function getUsuario()
+    public function getAnimUsuario()
     {
-        return $this->usuario;
+        return $this->anim_usuario;
     }
-    public function getAutor()
+    public function getAnimAutor()
     {
-        return $this->autor;
+        return $this->anim_autor;
     }
-    public function getQuantidadeEpisodios()
+    public function getAnimQuantidadeEpisodios()
     {
-        return $this->quantidade_episodios;
+        return $this->anim_quantidade_episodios;
     }
-    public function getQuantidadeTemporadas()
+    public function getAnimQuantidadeTemporadas()
     {
-        return $this->quantidade_temporadas;
+        return $this->anim_quantidade_temporadas;
     }
-    public function getYtId()
+    public function getAnimYtId()
     {
-        return $this->ytId;
+        return $this->anim_ytId;
     }
 
     // Métodos Set
-    public function setIdAnime($valor)
+    public function setAnimId($valor)
     {
-        $this->id_anime = $valor;
+        $this->anim_id = $valor;
     }
-    public function setNome($valor)
+    public function setAnimNome($valor)
     {
-        $this->nome = $valor;
+        $this->anim_nome = $valor;
     }
-    public function setDtNascimento($valor)
+    public function setAnimDtNascimento($valor)
     {
-        $this->dt_nascimento = $valor;
+        $this->anim_dt_nascimento = $valor;
     }
-    public function setClassificacaoIndicativa($valor)
+    public function setAnimClassificacaoIndicativa($valor)
     {
-        $this->classificacao_indicativa = $valor;
+        $this->anim_classificacao_indicativa = $valor;
     }
-    public function setGenero($valor)
+    public function setAnimGenero($valor)
     {
-        $this->genero = $valor;
+        $this->anim_genero = $valor;
     }
-    public function setUsuario($valor)
+    public function setAnimUsuario($valor)
     {
-        $this->usuario = $valor;
+        $this->anim_usuario = $valor;
     }
-    public function setAutor($valor)
+    public function setAnimAutor($valor)
     {
-        $this->autor = $valor;
+        $this->anim_autor = $valor;
     }
-    public function setQuantidadeEpisodios($valor)
+    public function setAnimQuantidadeEpisodios($valor)
     {
-        $this->quantidade_episodios = $valor;
+        $this->anim_quantidade_episodios = $valor;
     }
-    public function setQuantidadeTemporadas($valor)
+    public function setAnimQuantidadeTemporadas($valor)
     {
-        $this->quantidade_temporadas = $valor;
+        $this->anim_quantidade_temporadas = $valor;
     }
     public function setYtId($valor)
     {
-        $this->ytId = $valor;
+        $this->anim_ytId = $valor;
+    }
+
+    //Método para procurar todos os animes
+    public function findAll()
+    {
+        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    //Método para procurar pelo id
+    public function findById($id)
+    {
+        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id WHERE anim_id = '$id' ";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    //Método para procurar usando qualquer campo
+    public function findGenerico($campo, $valor)
+    {
+        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id  WHERE $campo = '$valor'";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
     }
 }
-
-
 ?>
 
 </html>

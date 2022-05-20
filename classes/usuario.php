@@ -1,37 +1,66 @@
 <html>
 <?php
+require_once "db.php";
 class Usuario
 {
     //Propriedades
-    private $id_usuario;
-    private $login;
-    private $senha;
+    private $usu_id;
+    private $usu_login;
+    private $usu_senha;
 
     //Metodos get
-    public function getIdUsuario()
+    public function getUsuId()
     {
-        return $this->id_usuario;
+        return $this->usu_id;
     }
-    public function getLogin()
+    public function getUsuLogin()
     {
-        return $this->login;
+        return $this->usu_login;
     }
-    public function getSenha()
+    public function getUsuSenha()
     {
-        return $this->senha;
+        return $this->usu_senha;
     }
     //Metodos set
-    public function setIdUsuario($valor)
+    public function setUsuId($valor)
     {
-        $this->id_usuario = $valor;
+        $this->usu_id = $valor;
     }
-    public function setLogin($valor)
+    public function setUsuLogin($valor)
     {
-        $this->login = $valor;
+        $this->usu_login = $valor;
     }
-    public function setSenha($valor)
+    public function setUsuSenha($valor)
     {
-        $this->senha = $valor;
+        $this->usu_senha = $valor;
+    }
+
+    //Método para Procurar todos os usuários
+    public function findAll()
+    {
+        $sql = "SELECT * FROM usuarios";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+    //Método para procurar pelo id
+    public function findById($id)
+    {
+        $sql = "SELECT * FROM usuarios WHERE usu_id = $id";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+    //Método para procupar por qualquer campo
+    public function findGenerico($campo, $valor)
+    {
+        $sql = "SELECT * FROM usuarios WHERE $campo = '$valor'";
+        $stmt = DB::prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
     }
 }
 ?>
