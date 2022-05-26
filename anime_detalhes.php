@@ -43,7 +43,7 @@ require_once "classes/anime.php";
                 <a class="nav-link" href="/listagem_animes.php">Lista de Animes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/cadastro_anime.html">Cadastrar Animes</a>
+                <a class="nav-link" href="/cadastro_anime.php">Cadastrar Animes</a>
               </li>
             </ul>
           </div>

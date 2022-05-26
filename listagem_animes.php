@@ -77,6 +77,7 @@ require_once "classes/anime.php";
         $anime->setAnimNome($value->anim_nome);
         $anime->setAnimDtLancamento($value->anim_dt_lancamento);
         $anime->setAnimClassificacaoIndicativa($value->anim_classificacao_indicativa);
+
         //Genero do Anime
         $genero = new Genero();
         $genero->setGenrId($value->genr_id);

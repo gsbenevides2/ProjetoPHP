@@ -2,9 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 12px;
 }
 .image-grid img {
-  width: 40%;
-  height: 40%;
+  max-width: 150px;
+  max-height: 300px;
   object-fit: cover;
 }

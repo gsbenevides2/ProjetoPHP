@@ -8,7 +8,7 @@
   height: 100vh;
   position: fixed;
   width: 100vw;
-  background-image: url("/media/background.webp");
+  background: transparent url("/media/background.webp");
   /*filter: blur(12px);*/
   background-size: cover;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@
 
 @media only screen and (min-width: 991px) {
   .background-changer {
-    animation: background-change 18s;
+    animation: background-change 25s;
   }
 }
 
