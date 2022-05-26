@@ -65,7 +65,7 @@ require_once "classes/anime.php";
           <h2><?php echo $unicoAnime->anim_nome; ?></h2>
           <span><b>Autor:</b> <?php echo $unicoAnime->anim_autor; ?></span><br />
           <span><b>Gênero:</b> <?php echo $unicoAnime->genr_nome; ?></span><br />
-          <span><b>Data de Lançamento:</b> <?php echo $unicoAnime->anim_dt_lancamento ?></span><br />
+          <span><b>Data de Lançamento:</b> <?php echo strftime("%d de %B de %Y", strtotime($unicoAnime->anim_dt_lancamento)) ?></span><br />
           <span><b>Quantidade de Temporadas:</b> <?php echo $unicoAnime->anim_quantidade_temporadas; ?></span><br />
 
           <span><b>Quantidade de Episódios:</b> <?php echo $unicoAnime->anim_quantidade_episodios; ?></span><br />

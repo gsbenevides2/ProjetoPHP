@@ -9,16 +9,22 @@
   position: fixed;
   width: 100vw;
   background-image: url("/media/background.webp");
-  filter: blur(12px);
+  /*filter: blur(12px);*/
   background-size: cover;
   background-repeat: no-repeat;
-  animation: background-change 12s;
+
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
   position: fixed;
 }
 .page-content {
   position: relative;
+}
+
+@media only screen and (min-width: 991px) {
+  .background-changer {
+    animation: background-change 18s;
+  }
 }
 
 @keyframes background-change {
