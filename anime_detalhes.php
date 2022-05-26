@@ -57,19 +57,42 @@ require_once "classes/anime.php";
         $anime = new Anime();
         $resultado = $anime->findById($animeId);
         $unicoAnime = $resultado['0'];
+        $anime = new Anime();
+        $anime->setAnimId($unicoAnime->anim_id);
+        $anime->setAnimNome($unicoAnime->anim_nome);
+        $anime->setAnimDtLancamento($unicoAnime->anim_dt_lancamento);
+        $anime->setAnimClassificacaoIndicativa($unicoAnime->anim_classificacao_indicativa);
+
+        //Genero do Anime
+        $genero = new Genero();
+        $genero->setGenrId($unicoAnime->genr_id);
+        $genero->setGenrNome($unicoAnime->genr_nome);
+        $anime->setAnimGenero($genero);
+
+        $anime->setAnimAutor($unicoAnime->anim_autor);
+        $anime->setAnimQuantidadeEpisodios($unicoAnime->anim_quantidade_episodios);
+        $anime->setAnimQuantidadeTemporadas($unicoAnime->anim_quantidade_temporadas);
+
+        //Usuario do anime
+        $usuario = new Usuario();
+        $usuario->setUsuId($unicoAnime->usu_id);
+        $usuario->setUsuLogin($unicoAnime->usu_login);
+        $usuario->setUsuSenha($unicoAnime->usu_senha);
+
+        $anime->setAnimYtId($unicoAnime->anim_yt_id);
         ?>
 
-        <?php echo '<iframe class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3" style="min-height: 400px" src="https://www.youtube.com/embed/' . $unicoAnime->anim_yt_id . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'; ?>
+        <?php echo '<iframe class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3" style="min-height: 400px" src="https://www.youtube.com/embed/' . $anime->getAnimYtId() . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'; ?>
 
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-          <h2><?php echo $unicoAnime->anim_nome; ?></h2>
-          <span><b>Autor:</b> <?php echo $unicoAnime->anim_autor; ?></span><br />
-          <span><b>Gênero:</b> <?php echo $unicoAnime->genr_nome; ?></span><br />
-          <span><b>Data de Lançamento:</b> <?php echo strftime("%d de %B de %Y", strtotime($unicoAnime->anim_dt_lancamento)) ?></span><br />
-          <span><b>Quantidade de Temporadas:</b> <?php echo $unicoAnime->anim_quantidade_temporadas; ?></span><br />
+          <h2><?php echo $anime->getAnimNome(); ?></h2>
+          <span><b>Autor:</b> <?php echo $anime->getAnimAutor(); ?></span><br />
+          <span><b>Gênero:</b> <?php echo $anime->getAnimGenero()->getGenrNome(); ?></span><br />
+          <span><b>Data de Lançamento:</b> <?php echo strftime("%d de %B de %Y", strtotime($anime->getAnimDtLancamento())) ?></span><br />
+          <span><b>Quantidade de Temporadas:</b> <?php echo $anime->getAnimQuantidadeTemporadas(); ?></span><br />
 
-          <span><b>Quantidade de Episódios:</b> <?php echo $unicoAnime->anim_quantidade_episodios; ?></span><br />
-          <span><b>Classificação Indicativa:</b> +<?php echo $unicoAnime->anim_classificacao_indicativa; ?></span>
+          <span><b>Quantidade de Episódios:</b> <?php echo $anime->getAnimQuantidadeEpisodios(); ?></span><br />
+          <span><b>Classificação Indicativa:</b> +<?php echo $anime->getAnimClassificacaoIndicativa(); ?></span>
           <div class="text-end">
             <button type="button" class="btn btn-outline-dark">Editar</button>
             <button type="button" class="btn btn-outline-danger">

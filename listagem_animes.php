@@ -69,13 +69,39 @@ require_once "classes/anime.php";
       </div>
       <?php
       $anime = new Anime();
+      $lista = $anime->findAll();
+      $listaDeAnimes = array();
+      foreach ($lista as $key => $value) {
+        $anime = new Anime();
+        $anime->setAnimId($value->anim_id);
+        $anime->setAnimNome($value->anim_nome);
+        $anime->setAnimDtLancamento($value->anim_dt_lancamento);
+        $anime->setAnimClassificacaoIndicativa($value->anim_classificacao_indicativa);
+        //Genero do Anime
+        $genero = new Genero();
+        $genero->setGenrId($value->genr_id);
+        $genero->setGenrNome($value->genr_nome);
+        $anime->setAnimGenero($genero);
 
-      $listaDeAnimes = $anime->findAll();
-      foreach ($listaDeAnimes as $key => $value) {
+        $anime->setAnimAutor($value->anim_autor);
+        $anime->setAnimQuantidadeEpisodios($value->anim_quantidade_episodios);
+        $anime->setAnimQuantidadeTemporadas($value->anim_quantidade_temporadas);
+
+        //Usuario do anime
+        $usuario = new Usuario();
+        $usuario->setUsuId($value->usu_id);
+        $usuario->setUsuLogin($value->usu_login);
+        $usuario->setUsuSenha($value->usu_senha);
+
+        $anime->setAnimYtId($value->anim_yt_id);
+        $listaDeAnimes[] = $anime;
+      }
+
+      foreach ($listaDeAnimes as $anime) {
         echo '<div class="card"><div class="card-body">';
-        echo '<h5 class="card-title">' . $value->anim_nome . '</h5>';
-        echo '<p class="card-text">Quantidade de temporadas:' . $value->anim_quantidade_temporadas . '</p>';
-        echo '<a href="/anime_detalhes.php?id=' . $value->anim_id . '" class="btn btn-secondary">Ver detalhes</a></div></div><br/>';
+        echo '<h5 class="card-title">' . $anime->getAnimNome() . '</h5>';
+        echo '<p class="card-text">Quantidade de temporadas:' . $anime->getAnimQuantidadeTemporadas() . '</p>';
+        echo '<a href="/anime_detalhes.php?id=' . $anime->getAnimId() . '" class="btn btn-secondary">Ver detalhes</a></div></div><br/>';
       }
       ?>
       <nav>

@@ -8,7 +8,7 @@ class Anime
     // Propriedades
     private $anim_id;
     private $anim_nome;
-    private $anim_dt_nascimento;
+    private $anim_dt_lancamento;
     private $anim_classificacao_indicativa;
     private $anim_genero;
     private $anim_usuario;
@@ -33,15 +33,15 @@ class Anime
     {
         return $this->anim_nome;
     }
-    public function getAnimDtNascimento()
+    public function getAnimDtLancamento()
     {
-        return $this->anim_dt_nascimento;
+        return $this->anim_dt_lancamento;
     }
     public function getAnimClassificacaoIndicativa()
     {
         return $this->anim_classificacao_indicativa;
     }
-    public function getAnim_Genero()
+    public function getAnimGenero()
     {
         return $this->anim_genero;
     }
@@ -75,9 +75,9 @@ class Anime
     {
         $this->anim_nome = $valor;
     }
-    public function setAnimDtNascimento($valor)
+    public function setAnimDtLancamento($valor)
     {
-        $this->anim_dt_nascimento = $valor;
+        $this->anim_dt_lancamento = $valor;
     }
     public function setAnimClassificacaoIndicativa($valor)
     {
@@ -103,7 +103,7 @@ class Anime
     {
         $this->anim_quantidade_temporadas = $valor;
     }
-    public function setYtId($valor)
+    public function setAnimYtId($valor)
     {
         $this->anim_ytId = $valor;
     }
