@@ -96,8 +96,8 @@
       </p>
 
       <div class="image-grid">
-        <a href="/anime_detalhes.php?id=2">  <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2FAnime%20001.jpg?alt=media&token=40b57774-b56f-40a6-b789-6bdf7c31cf1b" /></a>
-      <a href="/anime_detalhes.php?id=4"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Faime0005.jpg?alt=media&token=e33f9334-4c7f-43bf-b0ed-66cf14178eab" /></a>
+        <a href="/anime_detalhes.php?id=4">  <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2FAnime%20001.jpg?alt=media&token=40b57774-b56f-40a6-b789-6bdf7c31cf1b" /></a>
+      <a href="/anime_detalhes.php?id=2"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Faime0005.jpg?alt=media&token=e33f9334-4c7f-43bf-b0ed-66cf14178eab" /></a>
       <a href="/anime_detalhes.php?id=6"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Fanime002.jpg?alt=media&token=f107f630-0051-4842-b0a7-66b9bb636126" /></a>
       <a href="/anime_detalhes.php?id=5"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Fanime003.jpg?alt=media&token=af059df9-c4ed-43d4-820d-fb95622befdc" /></a>
       <a href="/anime_detalhes.php?id=7"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Fanime004.jpg?alt=media&token=b4610829-1a9a-4896-9e2f-935c1044a8fb" /></a>
