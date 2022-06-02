@@ -8,7 +8,7 @@ require_once "classes/anime.php";
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>86 Eighty-Six</title>
+  <title>Animes.com</title>
   <link rel="shortcut icon" href="/favicon.ico" />
 
   <!-- CSS only -->
