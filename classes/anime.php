@@ -111,7 +111,7 @@ class Anime
     //Método para procurar todos os animes
     public function findAll()
     {
-        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id";
+        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id JOIN usuarios ON anim_id_usuario = usu_id";
         $stmt = DB::prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -121,7 +121,7 @@ class Anime
     //Método para procurar pelo id
     public function findById($id)
     {
-        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id WHERE anim_id = '$id' ";
+        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id JOIN usuarios ON anim_id_usuario = usu_id WHERE anim_id = '$id' ";
         $stmt = DB::prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
