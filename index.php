@@ -57,25 +57,25 @@
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/love%20is%20war_1.jpg?alt=media&token=7de0ce9d-1914-4bf9-9d83-b63516f0326a" class="d-block w-100" />
+           <a href="/anime_detalhe.php?id=2"> <img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/love%20is%20war_1.jpg?alt=media&token=7de0ce9d-1914-4bf9-9d83-b63516f0326a" class="d-block w-100" /></a>
           </div>
           <div class="carousel-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/damonsleyer.jpg?alt=media&token=a1fa841b-7abd-44fb-9e3c-93f786c4cc7e" class="d-block w-100" />
+            <a href="/anime_detalhe.php?id=4"><img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/damonsleyer.jpg?alt=media&token=a1fa841b-7abd-44fb-9e3c-93f786c4cc7e" class="d-block w-100" /></a>
           </div>
           <div class="carousel-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/naruto.jpg?alt=media&token=5662bd5c-a973-4b9f-b904-0166a4e4e440" class="d-block w-100" />
+            <a href="/anime_detalhe.php?id=6"><img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/naruto.jpg?alt=media&token=5662bd5c-a973-4b9f-b904-0166a4e4e440" class="d-block w-100" /></a>
           </div>
           <div class="carousel-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/bleach_1.jpg?alt=media&token=bc0fffc5-7b03-4fa9-be09-55e73ec53f44" class="d-block w-100" />
+          <a href="/anime_detalhe.php?id=5"><<img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/bleach_1.jpg?alt=media&token=bc0fffc5-7b03-4fa9-be09-55e73ec53f44" class="d-block w-100" /></a>
           </div>
           <div class="carousel-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/onepiece.jpg?alt=media&token=f72f649f-a563-4942-9baa-694ee931fc34" class="d-block w-100" />
+          <a href="/anime_detalhe.php?id=7"><<img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/onepiece.jpg?alt=media&token=f72f649f-a563-4942-9baa-694ee931fc34" class="d-block w-100" /></a>
           </div>
           <div class="carousel-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/black_cover.jpg?alt=media&token=2c5c3e5f-5a37-412b-82d9-87ad0f581af7" class="d-block w-100" />
+          <a href="/anime_detalhe.php?id=8"><<img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/black_cover.jpg?alt=media&token=2c5c3e5f-5a37-412b-82d9-87ad0f581af7" class="d-block w-100" /></a>
           </div>
           <div class="carousel-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/one%20punch%20man.jpg?alt=media&token=e4d8964e-d684-4971-be2a-201b5847071c" class="d-block w-100" />
+          <a href="/anime_detalhe.php?id=9"><<img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/one%20punch%20man.jpg?alt=media&token=e4d8964e-d684-4971-be2a-201b5847071c" class="d-block w-100" /></a>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
