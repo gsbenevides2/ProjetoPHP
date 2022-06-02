@@ -108,6 +108,7 @@
       </h5>
     </div>
   </div>
+  <script src="/javascript/removeDisclamer.js"></script>
 </body>
 
 </html>
