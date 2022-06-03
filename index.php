@@ -49,33 +49,48 @@
       </div>
     </nav>
     <div class="container">
-      <h3>Quem somos:</h3>
-      <p>
-        DIC3 - A sua maior fonte de animes do Mundo, agora está em suas mãos,
-        trazendo notícias e novidades todos os dias!!!
-      </p>
+      <h4 class="text-center">
+        A sua maior fonte de animes do Mundo, agora está em suas mãos
+      </h4>
+      <h5 class="text-center">
+        Consulte as informações sobre seus animes favoritos!!
+      </h5>
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-           <div class="carousel-item active">
-           <a href="/anime_detalhes.php?id=2"> <img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/love%20is%20war_1.jpg?alt=media&token=7de0ce9d-1914-4bf9-9d83-b63516f0326a" class="d-block w-100" /></a>
+          <div class="carousel-item active">
+            <a href="/anime_detalhes.php?id=2">
+              <img src="/media/banners/kaguwa_sama.webp" class="d-block w-100" />
+            </a>
           </div>
           <div class="carousel-item">
-            <a href="/anime_detalhes.php?id=4"><img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/damonsleyer.jpg?alt=media&token=a1fa841b-7abd-44fb-9e3c-93f786c4cc7e" class="d-block w-100" /></a>
+            <a href="/anime_detalhes.php?id=4">
+              <img src="/media/banners/demon_slayer.webp" class="d-block w-100" />
+            </a>
           </div>
           <div class="carousel-item">
-            <a href="/anime_detalhes.php?id=6"><img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/naruto.jpg?alt=media&token=5662bd5c-a973-4b9f-b904-0166a4e4e440" class="d-block w-100" /></a>
+            <a href="/anime_detalhes.php?id=6">
+              <img src="/media/banners/naruto.webp" class="d-block w-100" />
+            </a>
           </div>
           <div class="carousel-item">
-          <a href="/anime_detalhes.php?id=5"><<img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/bleach_1.jpg?alt=media&token=bc0fffc5-7b03-4fa9-be09-55e73ec53f44" class="d-block w-100" /></a>
+            <a href="/anime_detalhes.php?id=5">
+              <img src="/media/banners/bleach.webp" class="d-block w-100" />
+            </a>
           </div>
           <div class="carousel-item">
-          <a href="/anime_detalhes.php?id=7"><<img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/onepiece.jpg?alt=media&token=f72f649f-a563-4942-9baa-694ee931fc34" class="d-block w-100" /></a>
+            <a href="/anime_detalhes.php?id=7">
+              <img src="/media/banners/one_piece.webp" class="d-block w-100" />
+            </a>
           </div>
           <div class="carousel-item">
-          <a href="/anime_detalhes.php?id=8"><<img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/black_cover.jpg?alt=media&token=2c5c3e5f-5a37-412b-82d9-87ad0f581af7" class="d-block w-100" /></a>
+            <a href="/anime_detalhes.php?id=8">
+              <img src="/media/banners/black_clover.webp" class="d-block w-100" />
+            </a>
           </div>
           <div class="carousel-item">
-          <a href="/anime_detalhes.php?id=9"><<img src="https://firebasestorage.googleapis.com/v0/b/projeto-php-ff075.appspot.com/o/one%20punch%20man.jpg?alt=media&token=e4d8964e-d684-4971-be2a-201b5847071c" class="d-block w-100" /></a>
+            <a href="/anime_detalhes.php?id=9">
+              <img src="/media/banners/one_puch_man.webp" class="d-block w-100" />
+            </a>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -87,7 +102,7 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <h3 class="mt-3">Conheça os ANIMES</h3>
+      <h3 class="mt-3">Conheça os ANIMES:</h3>
       <p>
         Animes são os desenhos animados produzidos no Japão. Para os japoneses
         os animes são todos os desenhos animados, independente da sua origem,
@@ -96,12 +111,24 @@
       </p>
 
       <div class="image-grid">
-        <a href="/anime_detalhes.php?id=4">  <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2FAnime%20001.jpg?alt=media&token=40b57774-b56f-40a6-b789-6bdf7c31cf1b" /></a>
-      <a href="/anime_detalhes.php?id=2"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Faime0005.jpg?alt=media&token=e33f9334-4c7f-43bf-b0ed-66cf14178eab" /></a>
-      <a href="/anime_detalhes.php?id=6"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Fanime002.jpg?alt=media&token=f107f630-0051-4842-b0a7-66b9bb636126" /></a>
-      <a href="/anime_detalhes.php?id=5"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Fanime003.jpg?alt=media&token=af059df9-c4ed-43d4-820d-fb95622befdc" /></a>
-      <a href="/anime_detalhes.php?id=7"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Fanime004.jpg?alt=media&token=b4610829-1a9a-4896-9e2f-935c1044a8fb" /></a>
-      <a href="/anime_detalhes.php?id=8"> <img src="https://firebasestorage.googleapis.com/v0/b/gui-benevides.appspot.com/o/animes%2Fnime006.jpg?alt=media&token=ddf9a871-8d40-4b8d-a753-f5cc0d9323b2" /></a>
+        <a href="/anime_detalhes.php?id=4">
+          <img src="/media/capas/deamon_slayer.webp" />
+        </a>
+        <a href="/anime_detalhes.php?id=2">
+          <img src="/media/capas/kaguwa_sama.webp" />
+        </a>
+        <a href="/anime_detalhes.php?id=6">
+          <img src="/media/capas/naruto.webp" />
+        </a>
+        <a href="/anime_detalhes.php?id=5">
+          <img src="/media/capas/bleach.webp" />
+        </a>
+        <a href="/anime_detalhes.php?id=7">
+          <img src="/media/capas/one_piece.webp" />
+        </a>
+        <a href="/anime_detalhes.php?id=8">
+          <img src="/media/capas/black_clover.webp" />
+        </a>
       </div>
       <h5 class="text-center pb-3 pt-3">
         Criado com 🖤 por Felipe, Guilherme e Lucas

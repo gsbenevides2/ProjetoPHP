@@ -3,19 +3,19 @@
 * {
   font-family: "Handlee", cursive;
 }
-
 .background-changer {
   height: 100vh;
-  position: fixed;
+
   width: 100vw;
-  background: transparent url("/media/background.webp");
-  /*filter: blur(12px);*/
+  background: transparent url("/media/background.jpeg");
+
   background-size: cover;
   background-repeat: no-repeat;
+  opacity: 0;
 
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
   position: fixed;
+
+  background-attachment: fixed;
 }
 .page-content {
   position: relative;
@@ -23,37 +23,56 @@
 
 @media only screen and (min-width: 991px) {
   .background-changer {
-    animation: background-change 25s;
+    animation: background-change 54s step-start infinite,
+      fade 6s linear infinite;
   }
 }
 
 @keyframes background-change {
-  0% {
-    background-image: url("/media/background.webp");
-  }
   11% {
-    background-image: url("/media/background2.webp");
+    background-position-y: 0%;
   }
   22% {
-    background-image: url("/media/background3.webp");
+    background-position-y: 14%;
   }
+
   33% {
-    background-image: url("/media/background4.webp");
+    background-position-y: 26%;
   }
   44% {
-    background-image: url("/media/background5.webp");
+    background-position-y: 38%;
   }
   55% {
-    background-image: url("/media/background6.webp");
+    background-position-y: 50%;
   }
   66% {
-    background-image: url("/media/background7.webp");
+    background-position-y: 62%;
   }
   77% {
-    background-image: url("/media/background8.webp");
+    background-position-y: 74%;
   }
   88% {
-    background-image: url("/media/background9.webp");
+    background-position-y: 86%;
+  }
+  99% {
+    background-position-y: 100%;
+  }
+  100% {
+    background-position-y: 0%;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
