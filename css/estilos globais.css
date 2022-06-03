@@ -84,3 +84,6 @@
 .container-lg {
   min-height: 100vh;
 }
+.disclaimer {
+  display: none !important;
+}
