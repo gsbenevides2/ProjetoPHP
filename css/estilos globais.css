@@ -11,16 +11,17 @@
 
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0;
-
+  opacity: 1;
+  background-position-y: -12%;
   position: fixed;
+  transition: opacity 1s ease-in-out;
 
   background-attachment: fixed;
 }
 .page-content {
   position: relative;
 }
-
+/*
 @media only screen and (min-width: 991px) {
   .background-changer {
     animation: background-change 54s step-start infinite,
@@ -62,7 +63,7 @@
   }
 }
 @keyframes fade {
-  0% {
+  5% {
     opacity: 0;
   }
   5% {
@@ -75,7 +76,7 @@
     opacity: 0;
   }
 }
-
+*/
 .navbar-collapse.show > .d-flex,
 .navbar-collapse.collapsing > .d-flex {
   display: block !important;

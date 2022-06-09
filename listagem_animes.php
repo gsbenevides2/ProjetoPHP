@@ -19,6 +19,8 @@ require_once "classes/anime.php";
 
   <!-- Link CSS de Formatação -->
   <link rel="stylesheet" href="css/estilos globais.css" />
+
+  <script src="/javascript/backgroundChanger.js"></script>
   <style>
     .page-link {
       color: black;

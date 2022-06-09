@@ -17,6 +17,8 @@
   <!-- Link CSS de Formatação -->
   <link rel="stylesheet" href="css/estilos globais.css" />
   <link rel="stylesheet" href="css/login.css" />
+
+  <script src="/javascript/backgroundChanger.js"></script>
 </head>
 
 <body>

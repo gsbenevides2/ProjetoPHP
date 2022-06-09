@@ -22,6 +22,8 @@
   <!-- Link CSS de Formatação -->
   <!--link rel="stylesheet" href="css/formatacao.css" /-->
   <link rel="stylesheet" href="css/estilos globais.css" />
+
+  <script src="/javascript/backgroundChanger.js"></script>
 </head>
 
 <body>
