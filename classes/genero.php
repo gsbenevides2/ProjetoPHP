@@ -1,4 +1,3 @@
-<html>
 <?php
 require_once "db.php";
 class Genero
@@ -68,6 +67,3 @@ class Genero
         }
     }
 }
-?>
-
-</html>

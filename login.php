@@ -18,8 +18,7 @@ if (
   } else {
     echo '<div class="alert alert-danger" role="alert">Senha ou Usuário incorretos!</div>';
   }
-}
-?>
+} ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -1,4 +1,3 @@
-<html>
 <?php
 /*
     Variaveis de configuração do Banco de Dados
@@ -8,6 +7,3 @@ const db_host = "";
 const db_name = "";
 const db_pwd = "";
 const db_user = "";
-?>
-
-</html>

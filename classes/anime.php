@@ -1,4 +1,3 @@
-<html>
 <?php
 include_once "genero.php";
 include_once "usuario.php";
@@ -206,6 +205,3 @@ class Anime
         }
     }
 }
-?>
-
-</html>

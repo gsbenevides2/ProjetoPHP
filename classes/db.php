@@ -1,9 +1,8 @@
-<html>
 <?php
 require_once "config.php";
 
 set_error_handler(function ($e) {
-    echo $e->getMessage();
+    print_r($e->getMessage());
 });
 
 class DB
@@ -33,6 +32,3 @@ class DB
         }
     }
 }
-?>
-
-</html>

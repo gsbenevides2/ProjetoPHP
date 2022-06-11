@@ -1,4 +1,3 @@
-<html>
 <?php
 require_once "db.php";
 class Usuario
@@ -96,6 +95,3 @@ class Usuario
         }
     }
 }
-?>
-
-</html>
