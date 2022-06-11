@@ -3,6 +3,22 @@ session_start();
 session_unset();
 include_once "classes/usuario.php";
 include_once "autentica.php";
+if (
+  isset($_POST['user']) && $_POST['user']  != '' && isset($_POST['password'])
+) {
+  extract($_POST);
+  $user = filter_var($user, FILTER_SANITIZE_STRING);
+
+  if (autentica($user, $password)) {
+    $_SESSION["usu_login"] = $user;
+    $usu = new Usuario();
+    $result = $usu->findGenerico("usu_login", $user)['0'];
+    $_SESSION["usu_id"] = $result->usu_id;
+    header("Location: index.php");
+  } else {
+    echo '<div class="alert alert-danger" role="alert">Senha ou Usuário incorretos!</div>';
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,41 +63,6 @@ include_once "autentica.php";
           <a class="text-dark" href="/cadastro_usuario.html">Não Tenho Conta</a>
         </div>
       </form>
-
-      <?php
-      if (
-        isset($_POST['user']) && $_POST['user']  != '' && isset($_POST['password'])
-      ) {
-        extract($_POST);
-        $user = filter_var($user, FILTER_SANITIZE_STRING);
-
-        if (autentica($user, $password)) {
-          $_SESSION["usu_login"] = $user;
-          $usu = new Usuario();
-          $result = $usu->findGenerico("usu_login", $user)['0'];
-          $_SESSION["usu_id"] = $result->usu_id;
-          header("Location: index.php");
-        } else {
-          echo "Não Autenticado";
-        }
-        /*
-        $result = $novo->findGenerico("usu_login", $novo->getUsuLogin());
-        if (count($result) == 0) {
-          echo "Não tem usuario";
-        } else {
-          $usu_banco = $result['0'];
-          if ($usu_banco && $usu_banco->usu_senha == $novo->getUsuSenha() && $usu_banco->usu_status == 'ativo') {
-            $_SESSION['usuario'] = $novo;
-            header('Location: index.php');
-          } else {
-            echo "erro";
-          }
-        }
-        */
-      }
-
-
-      ?>
     </div>
   </div>
 </body>

@@ -4,6 +4,85 @@ require_once 'classes/genero.php';
 require_once 'classes/anime.php';
 require_once 'classes/usuario.php';
 
+if (isset($_SESSION['usu_id']) == FALSE) {
+  header("Location: login.php");
+}
+
+if (
+  isset($_POST['id']) &&
+  isset($_POST['nome']) &&
+  $_POST['nome']  != '' &&
+  isset($_POST['dt_lancamento']) &&
+  isset($_POST['classificacao_indicativa']) &&
+  isset($_POST['id_genero']) &&
+  isset($_POST['autor']) &&
+  $_POST['autor']  != '' &&
+  isset($_POST['quantidade_episodios']) &&
+  isset($_POST['quantidade_temporadas']) &&
+  isset($_POST['yt_id']) &&
+  $_POST['yt_id']  != ''
+) {
+  extract($_POST);
+  //SANITIZANDO O NOME E AUTOR
+  $nome = filter_var($nome, FILTER_SANITIZE_STRING);
+  $autor = filter_var($autor, FILTER_SANITIZE_STRING);
+
+  //Instanciando o objeto anime para inseri-lo no banco
+  $novo = new Anime();
+  $novo->setAnimId($id);
+
+  //Verificando se o id do usuario que criou o anime é o mesmo que o da sessão
+
+  //Atualizando os atributos da anime
+  $novo->setAnimNome($nome);
+  $novo->setAnimDtLancamento($dt_lancamento);
+  $novo->setAnimClassificacaoIndicativa($classificacao_indicativa);
+  $novo->setIdGenero($id_genero);
+  $novo->setAnimAutor($autor);
+  $novo->setIdUsuario($_SESSION['usu_id']);
+  $novo->setAnimQuantidadeEpisodios($quantidade_episodios);
+  $novo->setAnimQuantidadeTemporadas($quantidade_temporadas);
+  $novo->setAnimYtId($yt_id);
+  //Inserindo o anime no banco
+  $novo->updateAnime();
+  header("Location: anime_detalhes.php?id=$id");
+} else {
+  //Obtendo o id do anime no do get
+  $animeId = $_GET['id'];
+  $anime = new Anime();
+  $anime->setAnimId($animeId);
+  //Obtendo o anime no banco de dados
+  $resultado = $anime->findById();
+  $unicoAnime = $resultado['0'];
+
+  //Verificando se o anime obtido para editar é do usuario logado;
+  if (($unicoAnime->anim_id_usuario == $_SESSION['usu_id']) == false) {
+    header('Location: login.php');
+  }
+
+  $anime->setAnimNome($unicoAnime->anim_nome);
+  $anime->setAnimDtLancamento($unicoAnime->anim_dt_lancamento);
+  $anime->setAnimClassificacaoIndicativa($unicoAnime->anim_classificacao_indicativa);
+
+  //Genero do Anime
+  $genero = new Genero();
+  $genero->setGenrId($unicoAnime->genr_id);
+  $genero->setGenrNome($unicoAnime->genr_nome);
+  $anime->setAnimGenero($genero);
+
+  $anime->setAnimAutor($unicoAnime->anim_autor);
+  $anime->setAnimQuantidadeEpisodios($unicoAnime->anim_quantidade_episodios);
+  $anime->setAnimQuantidadeTemporadas($unicoAnime->anim_quantidade_temporadas);
+
+  //Usuario do anime
+
+  $usuario = new Usuario();
+  $usuario->setUsuId($unicoAnime->usu_id);
+  $usuario->setUsuLogin($unicoAnime->usu_login);
+  $usuario->setUsuSenha($unicoAnime->usu_senha);
+
+  $anime->setAnimYtId($unicoAnime->anim_yt_id);
+}
 
 ?>
 <!DOCTYPE html>
@@ -68,90 +147,6 @@ require_once 'classes/usuario.php';
     </nav>
     <div class="container">
       <h1 class="text-center">Editar Anime</h1>
-
-      <?php
-
-      if (isset($_SESSION['usu_id']) == FALSE) {
-        header("Location: login.php");
-      }
-
-      if (
-        isset($_POST['id']) &&
-        isset($_POST['nome']) &&
-        $_POST['nome']  != '' &&
-        isset($_POST['dt_lancamento']) &&
-        isset($_POST['classificacao_indicativa']) &&
-        isset($_POST['id_genero']) &&
-        isset($_POST['autor']) &&
-        $_POST['autor']  != '' &&
-        isset($_POST['quantidade_episodios']) &&
-        isset($_POST['quantidade_temporadas']) &&
-        isset($_POST['yt_id']) &&
-        $_POST['yt_id']  != ''
-      ) {
-        extract($_POST);
-        //SANITIZANDO O NOME E AUTOR
-        $nome = filter_var($nome, FILTER_SANITIZE_STRING);
-        $autor = filter_var($autor, FILTER_SANITIZE_STRING);
-
-        //Instanciando o objeto anime para inseri-lo no banco
-        $novo = new Anime();
-        $novo->setAnimId($id);
-
-        //Verificando se o id do usuario que criou o anime é o mesmo que o da sessão
-
-        //Atualizando os atributos da anime
-        $novo->setAnimNome($nome);
-        $novo->setAnimDtLancamento($dt_lancamento);
-        $novo->setAnimClassificacaoIndicativa($classificacao_indicativa);
-        $novo->setIdGenero($id_genero);
-        $novo->setAnimAutor($autor);
-        $novo->setIdUsuario($_SESSION['usu_id']);
-        $novo->setAnimQuantidadeEpisodios($quantidade_episodios);
-        $novo->setAnimQuantidadeTemporadas($quantidade_temporadas);
-        $novo->setAnimYtId($yt_id);
-        //Inserindo o anime no banco
-        $novo->updateAnime();
-        header("Location: anime_detalhes.php?id=$id");
-      } else {
-        //Obtendo o id do anime no do get
-        $animeId = $_GET['id'];
-        $anime = new Anime();
-        $anime->setAnimId($animeId);
-        //Obtendo o anime no banco de dados
-        $resultado = $anime->findById();
-        $unicoAnime = $resultado['0'];
-
-        //Verificando se o anime obtido para editar é do usuario logado;
-        if (($unicoAnime->anim_id_usuario == $_SESSION['usu_id']) == false) {
-          header('Location: login.php');
-        }
-
-        $anime->setAnimNome($unicoAnime->anim_nome);
-        $anime->setAnimDtLancamento($unicoAnime->anim_dt_lancamento);
-        $anime->setAnimClassificacaoIndicativa($unicoAnime->anim_classificacao_indicativa);
-
-        //Genero do Anime
-        $genero = new Genero();
-        $genero->setGenrId($unicoAnime->genr_id);
-        $genero->setGenrNome($unicoAnime->genr_nome);
-        $anime->setAnimGenero($genero);
-
-        $anime->setAnimAutor($unicoAnime->anim_autor);
-        $anime->setAnimQuantidadeEpisodios($unicoAnime->anim_quantidade_episodios);
-        $anime->setAnimQuantidadeTemporadas($unicoAnime->anim_quantidade_temporadas);
-
-        //Usuario do anime
-
-        $usuario = new Usuario();
-        $usuario->setUsuId($unicoAnime->usu_id);
-        $usuario->setUsuLogin($unicoAnime->usu_login);
-        $usuario->setUsuSenha($unicoAnime->usu_senha);
-
-        $anime->setAnimYtId($unicoAnime->anim_yt_id);
-      }
-      ?>
-
       <form class="pb-3" id="cadastroform" name="cadastroform" action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
         <input type="hidden" id="id" name="id" value="<?php echo $anime->getAnimId(); ?>" />
         <div class="mb-3">

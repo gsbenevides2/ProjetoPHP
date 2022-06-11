@@ -3,6 +3,10 @@ session_start();
 include_once 'classes/genero.php';
 include_once 'classes/anime.php';
 include_once 'classes/usuario.php';
+if (isset($_SESSION['usu_id']) == FALSE) {
+  header("Location: login.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -68,9 +72,6 @@ include_once 'classes/usuario.php';
       <h1 class="text-center">Cadastro de Animes</h1>
 
       <?php
-      if (isset($_SESSION['usu_id']) == FALSE) {
-        header("Location: login.php");
-      }
       if (
         isset($_POST['nome']) &&
         $_POST['nome']  != '' &&
