@@ -10,7 +10,10 @@ class Anime
     private $anim_nome;
     private $anim_dt_lancamento;
     private $anim_classificacao_indicativa;
+
     private $id_genero;
+    private $id_usuario;
+
     private $anim_genero;
     private $anim_usuario;
     private $anim_autor;
@@ -41,6 +44,15 @@ class Anime
     public function getAnimClassificacaoIndicativa()
     {
         return $this->anim_classificacao_indicativa;
+    }
+
+    public function getIdGenero()
+    {
+        return $this->id_genero;
+    }
+    public function getIdUsuario()
+    {
+        return $this->id_usuario;
     }
 
     public function getAnimGenero()
@@ -88,6 +100,10 @@ class Anime
     public function setIdGenero($valor)
     {
         $this->id_genero = $valor;
+    }
+    public function setIdUsuario($valor)
+    {
+        $this->id_usuario = $valor;
     }
     public function setAnimGenero($valor)
     {
@@ -160,7 +176,8 @@ class Anime
     public function insertAnime()
     {
         try {
-            $sql = "INSERT INTO animes (anim_nome, anim_dt_lancamento, anim_classificacao_indicativa, anim_id_genero, anim_id_usuario, anim_autor, anim_quantidade_episodios, anim_quantidade_temporadas, anim_yt_id) VALUES ('$this->anim_nome', '$this->anim_dt_lancamento', '$this->anim_classificacao_indicativa', '$this->id_genero', '1', '$this->anim_autor', '$this->anim_quantidade_episodios', '$this->anim_quantidade_temporadas', '$this->anim_ytId')";
+            
+            $sql = "INSERT INTO animes (anim_nome, anim_dt_lancamento, anim_classificacao_indicativa, anim_id_genero, anim_id_usuario, anim_autor, anim_quantidade_episodios, anim_quantidade_temporadas, anim_yt_id) VALUES ('$this->anim_nome', '$this->anim_dt_lancamento', '$this->anim_classificacao_indicativa', '$this->id_genero', '$this->id_usuario', '$this->anim_autor', '$this->anim_quantidade_episodios', '$this->anim_quantidade_temporadas', '$this->anim_ytId')";
             $stmt = DB::prepare($sql);
             $stmt->execute();
         } catch (Exception $e) {
@@ -181,7 +198,7 @@ class Anime
     public function updateAnime()
     {
         try {
-            $sql = "UPDATE animes SET anim_nome='$this->anim_nome', anim_dt_lancamento='$this->anim_dt_lancamento', anim_classificacao_indicativa='$this->anim_classificacao_indicativa', anim_id_genero='$this->id_genero', anim_autor='$this->anim_autor', anim_quantidade_episodios='$this->anim_quantidade_episodios', anim_quantidade_temporadas='$this->anim_quantidade_temporadas', anim_id_usuario=1, anim_yt_id='$this->anim_ytId' WHERE anim_id = '$this->anim_id'";
+            $sql = "UPDATE animes SET anim_nome='$this->anim_nome', anim_dt_lancamento='$this->anim_dt_lancamento', anim_classificacao_indicativa='$this->anim_classificacao_indicativa', anim_id_genero='$this->id_genero', anim_autor='$this->anim_autor', anim_quantidade_episodios='$this->anim_quantidade_episodios', anim_quantidade_temporadas='$this->anim_quantidade_temporadas', anim_id_usuario='$this->id_usuario', anim_yt_id='$this->anim_ytId' WHERE anim_id = '$this->anim_id'";
             $stmt = DB::prepare($sql);
             $stmt->execute();
         } catch (Exception $e) {

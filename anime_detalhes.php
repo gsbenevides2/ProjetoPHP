@@ -1,7 +1,10 @@
-<!DOCTYPE html>
 <?php
+session_start();
 include_once "classes/anime.php";
+
 ?>
+<!DOCTYPE html>
+
 <html lang="pt-br">
 
 <head>
@@ -45,7 +48,14 @@ include_once "classes/anime.php";
                 <a class="nav-link" href="/listagem_animes.php">Lista de Animes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/cadastro_anime.php">Cadastrar Animes</a>
+                <?php
+                if (isset($_SESSION['usu_id'])) {
+                  echo '<a class="nav-link" href="/deslogar.php">Sair</a>';
+                } else {
+                  echo '<a class="nav-link" href="/login.php">Entrar</a>';
+                }
+                ?>
+
               </li>
             </ul>
           </div>
@@ -55,6 +65,8 @@ include_once "classes/anime.php";
     <div class="container">
       <div class="row">
         <?php
+
+
         //Recuperando dados do anime;
         $animeId = $_GET['id'];
         $anime = new Anime();
@@ -75,12 +87,6 @@ include_once "classes/anime.php";
         $anime->setAnimQuantidadeEpisodios($unicoAnime->anim_quantidade_episodios);
         $anime->setAnimQuantidadeTemporadas($unicoAnime->anim_quantidade_temporadas);
 
-        //Usuario do anime
-        $usuario = new Usuario();
-        $usuario->setUsuId($unicoAnime->usu_id);
-        $usuario->setUsuLogin($unicoAnime->usu_login);
-        $usuario->setUsuSenha($unicoAnime->usu_senha);
-
         $anime->setAnimYtId($unicoAnime->anim_yt_id);
         ?>
 
@@ -95,12 +101,17 @@ include_once "classes/anime.php";
 
           <span><b>Quantidade de Episódios:</b> <?php echo $anime->getAnimQuantidadeEpisodios(); ?></span><br />
           <span><b>Classificação Indicativa:</b> +<?php echo $anime->getAnimClassificacaoIndicativa(); ?></span>
-          <div class="text-end">
-            <a type="button" class="btn btn-outline-dark" href="editar_anime.php?id=<?php echo $anime->getAnimId(); ?>">Editar</a>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#animeDeleteModal">
-              Deletar
-            </button>
-          </div>
+
+          <?php
+          if (isset($_SESSION['usu_id']) && $_SESSION['usu_id'] == $unicoAnime->anim_id_usuario) {
+            echo '<div class="text-end">';
+            echo '<a type="button" class="btn btn-outline-dark" href="editar_anime.php?id=' . $anime->getAnimId() . '">Editar</a><span>  </span>';
+            echo '<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#animeDeleteModal">Deletar</button>';
+            echo '</div>';
+          };
+          ?>
+
+
         </div>
       </div>
     </div>

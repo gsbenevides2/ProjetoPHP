@@ -1,3 +1,10 @@
+<?php
+session_start();
+session_unset();
+include_once "classes/usuario.php";
+include_once "autentica.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,20 +33,55 @@
   <div class="container">
     <div class="box">
       <h1>Login</h1>
-      <form action="">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="login_usu" name="login_usu">
         <div class="mb-3">
           <label for="user" class="form-label">Usuário:</label>
-          <input type="text" class="form-control" id="user" />
+          <input type="text" class="form-control" id="user" name="user" />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Senha:</label>
-          <input type="password" class="form-control" id="password" />
+          <input type="password" class="form-control" id="password" name="password" />
         </div>
         <div class="d-flex flex-column text-center mt-4">
           <button type="submit" class="btn btn-dark mb-2">Entrar</button>
           <a class="text-dark" href="/cadastro_usuario.html">Não Tenho Conta</a>
         </div>
       </form>
+
+      <?php
+      if (
+        isset($_POST['user']) && $_POST['user']  != '' && isset($_POST['password'])
+      ) {
+        extract($_POST);
+        $user = filter_var($user, FILTER_SANITIZE_STRING);
+
+        if (autentica($user, $password)) {
+          $_SESSION["usu_login"] = $user;
+          $usu = new Usuario();
+          $result = $usu->findGenerico("usu_login", $user)['0'];
+          $_SESSION["usu_id"] = $result->usu_id;
+          header("Location: index.php");
+        } else {
+          echo "Não Autenticado";
+        }
+        /*
+        $result = $novo->findGenerico("usu_login", $novo->getUsuLogin());
+        if (count($result) == 0) {
+          echo "Não tem usuario";
+        } else {
+          $usu_banco = $result['0'];
+          if ($usu_banco && $usu_banco->usu_senha == $novo->getUsuSenha() && $usu_banco->usu_status == 'ativo') {
+            $_SESSION['usuario'] = $novo;
+            header('Location: index.php');
+          } else {
+            echo "erro";
+          }
+        }
+        */
+      }
+
+
+      ?>
     </div>
   </div>
 </body>

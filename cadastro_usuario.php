@@ -1,3 +1,7 @@
+<?php
+include_once "classes/usuario.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,20 +30,36 @@
   <div class="container">
     <div class="box">
       <h1>Cadastro de Usuário</h1>
-      <form action="">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
         <div class="mb-3">
           <label for="user" class="form-label">Usuário:</label>
-          <input type="text" class="form-control" id="user" />
+          <input type="text" class="form-control" id="user" name="user" />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Senha:</label>
-          <input type="password" class="form-control" id="password" />
+          <input type="password" class="form-control" id="password" name="password" />
         </div>
         <div class="d-flex flex-column text-center mt-4">
           <button type="submit" class="btn btn-dark mb-2">Cadastrar</button>
           <a class="text-dark" href="/login.html">Já Tenho Conta</a>
         </div>
       </form>
+      <?php
+      if (
+        isset($_POST['user']) && $_POST['user']  != '' && isset($_POST['password'])
+      ) {
+        extract($_POST);
+        $user = filter_var($user, FILTER_SANITIZE_STRING);
+
+        $novo = new Usuario();
+        $novo->setUsuLogin($user);
+        $novo->setUsuSenha($password);
+        $novo->setUsuStatus('ativo');
+        $novo->insertUsuario();
+        header("Location: login.php");
+      }
+      ?>
+
     </div>
   </div>
 </body>

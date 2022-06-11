@@ -1,12 +1,14 @@
+<?php
+session_start();
+include_once 'classes/genero.php';
+include_once 'classes/anime.php';
+include_once 'classes/usuario.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-  <?php
-  require_once 'classes/genero.php';
-  require_once 'classes/anime.php';
-  require_once 'classes/usuario.php';
-  ?>
+
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,7 +50,14 @@
                 <a class="nav-link" href="/listagem_animes.php">Lista de Animes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/cadastro_anime.php">Cadastrar Animes</a>
+                <?php
+                if (isset($_SESSION['usu_id'])) {
+                  echo '<a class="nav-link" href="/deslogar.php">Sair</a>';
+                } else {
+                  echo '<a class="nav-link" href="/login.php">Entrar</a>';
+                }
+                ?>
+
               </li>
             </ul>
           </div>
@@ -59,6 +68,9 @@
       <h1 class="text-center">Cadastro de Animes</h1>
 
       <?php
+      if (isset($_SESSION['usu_id']) == FALSE) {
+        header("Location: login.php");
+      }
       if (
         isset($_POST['nome']) &&
         $_POST['nome']  != '' &&
@@ -72,6 +84,7 @@
         isset($_POST['yt_id']) &&
         $_POST['yt_id']  != ''
       ) {
+
         extract($_POST);
         //SANITIZANDO O NOME E AUTOR
         $nome = filter_var($nome, FILTER_SANITIZE_STRING);
@@ -83,10 +96,16 @@
         $novo->setAnimDtLancamento($dt_lancamento);
         $novo->setAnimClassificacaoIndicativa($classificacao_indicativa);
         $novo->setIdGenero($id_genero);
+
+        $novo->setIdUsuario($_SESSION['usu_id']);
+
         $novo->setAnimAutor($autor);
         $novo->setAnimQuantidadeEpisodios($quantidade_episodios);
         $novo->setAnimQuantidadeTemporadas($quantidade_temporadas);
         $novo->setAnimYtId($yt_id);
+
+
+
 
         //Inserindo o anime no banco
         $novo->insertAnime();

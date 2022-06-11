@@ -7,6 +7,7 @@ class Usuario
     private $usu_id;
     private $usu_login;
     private $usu_senha;
+    private $usu_status;
 
     //Metodos get
     public function getUsuId()
@@ -21,6 +22,11 @@ class Usuario
     {
         return $this->usu_senha;
     }
+    public function getUsuStatus()
+    {
+        return $this->usu_status;
+    }
+
     //Metodos set
     public function setUsuId($valor)
     {
@@ -33,6 +39,10 @@ class Usuario
     public function setUsuSenha($valor)
     {
         $this->usu_senha = $valor;
+    }
+    public function setUsuStatus($valor)
+    {
+        $this->usu_status = $valor;
     }
 
     //Método para Procurar todos os usuários
@@ -70,6 +80,17 @@ class Usuario
             $stmt->execute();
             $result = $stmt->fetchAll();
             return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function insertUsuario()
+    {
+        try {
+            $sql = "INSERT INTO usuarios (usu_login, usu_senha, usu_status) VALUES ('$this->usu_login', '$this->usu_senha', '$this->usu_status')";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
         } catch (Exception $e) {
             echo $e->getMessage();
         }

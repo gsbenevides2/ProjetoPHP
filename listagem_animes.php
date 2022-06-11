@@ -55,7 +55,14 @@ require_once "classes/anime.php";
                 <a class="nav-link" href="/listagem_animes.php">Lista de Animes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/cadastro_anime.php">Cadastrar Animes</a>
+                <?php
+                if (isset($_SESSION['usu_id'])) {
+                  echo '<a class="nav-link" href="/deslogar.php">Sair</a>';
+                } else {
+                  echo '<a class="nav-link" href="/login.php">Entrar</a>';
+                }
+                ?>
+
               </li>
             </ul>
           </div>

@@ -1,12 +1,16 @@
+<?php
+session_start();
+require_once 'classes/genero.php';
+require_once 'classes/anime.php';
+require_once 'classes/usuario.php';
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-  <?php
-  require_once 'classes/genero.php';
-  require_once 'classes/anime.php';
-  require_once 'classes/usuario.php';
-  ?>
+
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,7 +52,14 @@
                 <a class="nav-link" href="/listagem_animes.php">Lista de Animes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/cadastro_anime.php">Cadastrar Animes</a>
+                <?php
+                if (isset($_SESSION['usu_id'])) {
+                  echo '<a class="nav-link" href="/deslogar.php">Sair</a>';
+                } else {
+                  echo '<a class="nav-link" href="/login.php">Entrar</a>';
+                }
+                ?>
+
               </li>
             </ul>
           </div>
@@ -59,6 +70,11 @@
       <h1 class="text-center">Editar Anime</h1>
 
       <?php
+
+      if (isset($_SESSION['usu_id']) == FALSE) {
+        header("Location: login.php");
+      }
+
       if (
         isset($_POST['id']) &&
         isset($_POST['nome']) &&
@@ -80,13 +96,17 @@
 
         //Instanciando o objeto anime para inseri-lo no banco
         $novo = new Anime();
-        echo $id;
         $novo->setAnimId($id);
+
+        //Verificando se o id do usuario que criou o anime é o mesmo que o da sessão
+
+        //Atualizando os atributos da anime
         $novo->setAnimNome($nome);
         $novo->setAnimDtLancamento($dt_lancamento);
         $novo->setAnimClassificacaoIndicativa($classificacao_indicativa);
         $novo->setIdGenero($id_genero);
         $novo->setAnimAutor($autor);
+        $novo->setIdUsuario($_SESSION['usu_id']);
         $novo->setAnimQuantidadeEpisodios($quantidade_episodios);
         $novo->setAnimQuantidadeTemporadas($quantidade_temporadas);
         $novo->setAnimYtId($yt_id);
@@ -94,11 +114,19 @@
         $novo->updateAnime();
         header("Location: anime_detalhes.php?id=$id");
       } else {
+        //Obtendo o id do anime no do get
         $animeId = $_GET['id'];
         $anime = new Anime();
         $anime->setAnimId($animeId);
+        //Obtendo o anime no banco de dados
         $resultado = $anime->findById();
         $unicoAnime = $resultado['0'];
+
+        //Verificando se o anime obtido para editar é do usuario logado;
+        if (($unicoAnime->anim_id_usuario == $_SESSION['usu_id']) == false) {
+          header('Location: login.php');
+        }
+
         $anime->setAnimNome($unicoAnime->anim_nome);
         $anime->setAnimDtLancamento($unicoAnime->anim_dt_lancamento);
         $anime->setAnimClassificacaoIndicativa($unicoAnime->anim_classificacao_indicativa);
@@ -114,6 +142,7 @@
         $anime->setAnimQuantidadeTemporadas($unicoAnime->anim_quantidade_temporadas);
 
         //Usuario do anime
+
         $usuario = new Usuario();
         $usuario->setUsuId($unicoAnime->usu_id);
         $usuario->setUsuLogin($unicoAnime->usu_login);
