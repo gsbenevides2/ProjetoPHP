@@ -1,4 +1,3 @@
-<html>
 <?php
 include_once "classes/db.php";
 function autentica($login, $senha)
@@ -10,6 +9,3 @@ function autentica($login, $senha)
     if ($linhas) return TRUE;
     else return FALSE;
 }
-?>
-
-</html>

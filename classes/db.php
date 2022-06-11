@@ -1,10 +1,5 @@
 <?php
 require_once "config.php";
-
-set_error_handler(function ($e) {
-    print_r($e->getMessage());
-});
-
 class DB
 {
     private static $instance;
