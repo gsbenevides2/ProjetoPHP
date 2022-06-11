@@ -115,7 +115,7 @@ require_once "classes/anime.php";
       }
       ?>
       <nav>
-        <ul class="pagination justify-content-center mt-3 pb-3">
+        <!--ul class="pagination justify-content-center mt-3 pb-3">
           <li class="page-item">
             <a class="page-link" href="#">Anterior</a>
           </li>
@@ -123,7 +123,7 @@ require_once "classes/anime.php";
           <li class="page-item"><a class="page-link" href="#">2</a></li>
           <li class="page-item"><a class="page-link" href="#">3</a></li>
           <li class="page-item"><a class="page-link" href="#">Proximo</a></li>
-        </ul>
+        </!--ul>
       </nav>
     </div>
   </div>
