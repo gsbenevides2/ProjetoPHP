@@ -10,7 +10,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro de Animes</title>
+  <title>Edição do Anime</title>
   <link rel="shortcut icon" href="/favicon.ico" />
 
   <!-- CSS only -->
@@ -56,10 +56,11 @@
       </div>
     </nav>
     <div class="container">
-      <h1 class="text-center">Cadastro de Animes</h1>
+      <h1 class="text-center">Editar Anime</h1>
 
       <?php
       if (
+        isset($_POST['id']) &&
         isset($_POST['nome']) &&
         $_POST['nome']  != '' &&
         isset($_POST['dt_lancamento']) &&
@@ -79,6 +80,8 @@
 
         //Instanciando o objeto anime para inseri-lo no banco
         $novo = new Anime();
+        echo $id;
+        $novo->setAnimId($id);
         $novo->setAnimNome($nome);
         $novo->setAnimDtLancamento($dt_lancamento);
         $novo->setAnimClassificacaoIndicativa($classificacao_indicativa);
@@ -87,29 +90,56 @@
         $novo->setAnimQuantidadeEpisodios($quantidade_episodios);
         $novo->setAnimQuantidadeTemporadas($quantidade_temporadas);
         $novo->setAnimYtId($yt_id);
-
         //Inserindo o anime no banco
-        $novo->insertAnime();
-        echo '<div class="alert alert-success" role="alert">Anime Cadastrado com Sucesso!</div>';
+        $novo->updateAnime();
+        header("Location: anime_detalhes.php?id=$id");
+      } else {
+        $animeId = $_GET['id'];
+        $anime = new Anime();
+        $anime->setAnimId($animeId);
+        $resultado = $anime->findById();
+        $unicoAnime = $resultado['0'];
+        $anime->setAnimNome($unicoAnime->anim_nome);
+        $anime->setAnimDtLancamento($unicoAnime->anim_dt_lancamento);
+        $anime->setAnimClassificacaoIndicativa($unicoAnime->anim_classificacao_indicativa);
+
+        //Genero do Anime
+        $genero = new Genero();
+        $genero->setGenrId($unicoAnime->genr_id);
+        $genero->setGenrNome($unicoAnime->genr_nome);
+        $anime->setAnimGenero($genero);
+
+        $anime->setAnimAutor($unicoAnime->anim_autor);
+        $anime->setAnimQuantidadeEpisodios($unicoAnime->anim_quantidade_episodios);
+        $anime->setAnimQuantidadeTemporadas($unicoAnime->anim_quantidade_temporadas);
+
+        //Usuario do anime
+        $usuario = new Usuario();
+        $usuario->setUsuId($unicoAnime->usu_id);
+        $usuario->setUsuLogin($unicoAnime->usu_login);
+        $usuario->setUsuSenha($unicoAnime->usu_senha);
+
+        $anime->setAnimYtId($unicoAnime->anim_yt_id);
       }
       ?>
 
       <form class="pb-3" id="cadastroform" name="cadastroform" action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
+        <input type="hidden" id="id" name="id" value="<?php echo $anime->getAnimId(); ?>" />
         <div class="mb-3">
           <label for="name" class="form-label">Nome:</label>
-          <input type="text" class="form-control" id="nome" name="nome" />
+          <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $anime->getAnimNome(); ?>" />
         </div>
         <div class="mb-3">
           <label for="dt_lancamento" class="form-label">
             Data de Lançamento:
           </label>
-          <input type="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="form-control" id="dt_lancamento" name="dt_lancamento" />
+          <input type="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="form-control" id="dt_lancamento" name="dt_lancamento" value="<?php echo $anime->getAnimDtLancamento(); ?>" />
         </div>
         <div class="mb-3">
           <label for="classificacao_indicativa" class="form-label">
             Classificação indicativa:
           </label>
-          <input type="number" class="form-control" min=1 id="classificacao_indicativa" name="classificacao_indicativa" />
+          <input type="number" class="form-control" min=1 id="classificacao_indicativa" name="classificacao_indicativa" value="<?php echo $anime->getAnimClassificacaoIndicativa(); ?>" />
         </div>
         <div class="mb-3">
           <label for="id_genero" class="form-label"> Gênero: </label>
@@ -130,7 +160,8 @@
             }
 
             foreach ($arr_genero as $genero) {
-              echo '<option value="' . $genero->getGenrId() . '">' . $genero->getGenrNome() . "</option>";
+              if ($anime->getAnimGenero()->getGenrId() ==  $genero->getGenrId()) echo '<option value="' . $genero->getGenrId() . '" selected>' . $genero->getGenrNome() . "</option>";
+              else echo '<option value="' . $genero->getGenrId() . '">' . $genero->getGenrNome() . "</option>";
             }
 
             ?>
@@ -138,29 +169,29 @@
         </div>
         <div class="mb-3">
           <label for="autor" class="form-label"> Autor: </label>
-          <input type="text" class="form-control" id="autor" name="autor" />
+          <input type="text" class="form-control" id="autor" name="autor" value="<?php echo $anime->getAnimAutor(); ?>" />
         </div>
         <div class="mb-3">
           <label for="quantidade_episodios" class="form-label">
             Quantidade de Episódios:
           </label>
-          <input type="number" class="form-control" id="quantidade_episodios" name="quantidade_episodios" />
+          <input type="number" class="form-control" id="quantidade_episodios" name="quantidade_episodios" value="<?php echo $anime->getAnimQuantidadeEpisodios(); ?>" />
         </div>
         <div class="mb-3">
           <label for="quantidade_temporadas" class="form-label">
             Quantidade de Temporadas:
           </label>
-          <input type="number" class="form-control" id="quantidade_temporadas" name="quantidade_temporadas" />
+          <input type="number" class="form-control" id="quantidade_temporadas" name="quantidade_temporadas" value="<?php echo $anime->getAnimQuantidadeTemporadas(); ?>" />
         </div>
         <div class="mb-3 pb-3">
           <label for="yt_id" class="form-label">
             Id da Opening no Youtube:
           </label>
-          <input type="text" class="form-control" id="yt_id" name="yt_id" />
+          <input type="text" class="form-control" id="yt_id" name="yt_id" value="<?php echo $anime->getAnimYtId(); ?>" />
         </div>
         <div class="text-end w-100">
           <button type="submit" class="btn btn-dark inline-block">
-            Cadastrar
+            Salvar Alterações
           </button>
         </div>
       </form>

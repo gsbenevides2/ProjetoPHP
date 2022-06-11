@@ -1,6 +1,11 @@
 <html>
 <?php
 require_once "config.php";
+
+set_error_handler(function ($e) {
+    echo $e->getMessage();
+});
+
 class DB
 {
     private static $instance;
@@ -16,12 +21,16 @@ class DB
                 echo $e->getMessage();
             }
             return self::$instance;
-        }
+        } else return self::$instance;
     }
 
     public static function prepare($sql)
     {
-        return self::getInstance()->prepare($sql);
+        try {
+            return self::getInstance()->prepare($sql);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
 ?>

@@ -30,29 +30,42 @@ class Genero
     //Método para procurar todos os generos
     public function findAll()
     {
-        $sql = "SELECT * FROM generos";
-        $stmt = DB::prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
+        try {
+            $sql = "SELECT * FROM generos";
+            $stmt = DB::prepare($sql);
+            print_r($stmt);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     //Método para procurar pelo id
-    public function findById($id)
+    public function findById()
     {
-        $sql = "SELECT * FROM generos WHERE genr_id";
-        $stmt = DB::prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
+        try {
+            $sql = "SELECT * FROM generos WHERE genr_id ='$this->genr_id'";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
     public function findGenerico($campo, $valor)
     {
-        $sql = "SELECT * FROM generos WHERE $campo = '$valor'";
-        $stmt = DB::prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
+        try {
+            $sql = "SELECT * FROM generos WHERE $campo = '$valor'";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
 ?>

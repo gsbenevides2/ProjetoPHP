@@ -2,7 +2,7 @@
 <?php
 include_once "genero.php";
 include_once "usuario.php";
-require_once "db.php";
+include_once "db.php";
 class Anime
 {
     // Propriedades
@@ -10,6 +10,7 @@ class Anime
     private $anim_nome;
     private $anim_dt_lancamento;
     private $anim_classificacao_indicativa;
+    private $id_genero;
     private $anim_genero;
     private $anim_usuario;
     private $anim_autor;
@@ -41,6 +42,7 @@ class Anime
     {
         return $this->anim_classificacao_indicativa;
     }
+
     public function getAnimGenero()
     {
         return $this->anim_genero;
@@ -83,6 +85,10 @@ class Anime
     {
         $this->anim_classificacao_indicativa = $valor;
     }
+    public function setIdGenero($valor)
+    {
+        $this->id_genero = $valor;
+    }
     public function setAnimGenero($valor)
     {
         $this->anim_genero = $valor;
@@ -111,31 +117,76 @@ class Anime
     //Método para procurar todos os animes
     public function findAll()
     {
-        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id JOIN usuarios ON anim_id_usuario = usu_id";
-        $stmt = DB::prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
+        try {
+            $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id JOIN usuarios ON anim_id_usuario = usu_id";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     //Método para procurar pelo id
-    public function findById($id)
+    public function findById()
     {
-        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id JOIN usuarios ON anim_id_usuario = usu_id WHERE anim_id = '$id' ";
-        $stmt = DB::prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
+        try {
+            $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id JOIN usuarios ON anim_id_usuario = usu_id WHERE anim_id = '$this->anim_id' ";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     //Método para procurar usando qualquer campo
     public function findGenerico($campo, $valor)
     {
-        $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id  WHERE $campo = '$valor'";
-        $stmt = DB::prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
+        try {
+            $sql = "SELECT * FROM animes JOIN generos ON anim_id_genero = genr_id  WHERE $campo = '$valor'";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    //Método para inserir um anime
+    public function insertAnime()
+    {
+        try {
+            $sql = "INSERT INTO animes (anim_nome, anim_dt_lancamento, anim_classificacao_indicativa, anim_id_genero, anim_id_usuario, anim_autor, anim_quantidade_episodios, anim_quantidade_temporadas, anim_yt_id) VALUES ('$this->anim_nome', '$this->anim_dt_lancamento', '$this->anim_classificacao_indicativa', '$this->id_genero', '1', '$this->anim_autor', '$this->anim_quantidade_episodios', '$this->anim_quantidade_temporadas', '$this->anim_ytId')";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function deleteAnime()
+    {
+        try {
+            $sql = "DELETE FROM animes WHERE anim_id = $this->anim_id";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+    public function updateAnime()
+    {
+        try {
+            $sql = "UPDATE animes SET anim_nome='$this->anim_nome', anim_dt_lancamento='$this->anim_dt_lancamento', anim_classificacao_indicativa='$this->anim_classificacao_indicativa', anim_id_genero='$this->id_genero', anim_autor='$this->anim_autor', anim_quantidade_episodios='$this->anim_quantidade_episodios', anim_quantidade_temporadas='$this->anim_quantidade_temporadas', anim_id_usuario=1, anim_yt_id='$this->anim_ytId' WHERE anim_id = '$this->anim_id'";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
 ?>

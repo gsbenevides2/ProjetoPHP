@@ -38,29 +38,41 @@ class Usuario
     //Método para Procurar todos os usuários
     public function findAll()
     {
-        $sql = "SELECT * FROM usuarios";
-        $stmt = DB::prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
+        try {
+            $sql = "SELECT * FROM usuarios";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
     //Método para procurar pelo id
     public function findById($id)
     {
-        $sql = "SELECT * FROM usuarios WHERE usu_id = $id";
-        $stmt = DB::prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
+        try {
+            $sql = "SELECT * FROM usuarios WHERE usu_id = $id";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
     //Método para procupar por qualquer campo
     public function findGenerico($campo, $valor)
     {
-        $sql = "SELECT * FROM usuarios WHERE $campo = '$valor'";
-        $stmt = DB::prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        return $result;
+        try {
+            $sql = "SELECT * FROM usuarios WHERE $campo = '$valor'";
+            $stmt = DB::prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
 ?>

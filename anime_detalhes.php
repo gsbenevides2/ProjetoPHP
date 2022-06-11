@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require_once "classes/anime.php";
+include_once "classes/anime.php";
 ?>
 <html lang="pt-br">
 
@@ -55,12 +55,12 @@ require_once "classes/anime.php";
     <div class="container">
       <div class="row">
         <?php
+        //Recuperando dados do anime;
         $animeId = $_GET['id'];
         $anime = new Anime();
-        $resultado = $anime->findById($animeId);
+        $anime->setAnimId($animeId);
+        $resultado = $anime->findById();
         $unicoAnime = $resultado['0'];
-        $anime = new Anime();
-        $anime->setAnimId($unicoAnime->anim_id);
         $anime->setAnimNome($unicoAnime->anim_nome);
         $anime->setAnimDtLancamento($unicoAnime->anim_dt_lancamento);
         $anime->setAnimClassificacaoIndicativa($unicoAnime->anim_classificacao_indicativa);
@@ -96,11 +96,28 @@ require_once "classes/anime.php";
           <span><b>Quantidade de Episódios:</b> <?php echo $anime->getAnimQuantidadeEpisodios(); ?></span><br />
           <span><b>Classificação Indicativa:</b> +<?php echo $anime->getAnimClassificacaoIndicativa(); ?></span>
           <div class="text-end">
-            <button type="button" class="btn btn-outline-dark">Editar</button>
-            <button type="button" class="btn btn-outline-danger">
+            <a type="button" class="btn btn-outline-dark" href="editar_anime.php?id=<?php echo $anime->getAnimId(); ?>">Editar</a>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#animeDeleteModal">
               Deletar
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="animeDeleteModal" tabindex="-1" aria-labelledby="animeDeleteModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Deletar Anime</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Você realmente deseja deletar esse anime?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <a type="button" class="btn btn-outline-danger" href="/deletar_anime.php?id=<?php echo $anime->getAnimId(); ?>">Deletar</a>
         </div>
       </div>
     </div>

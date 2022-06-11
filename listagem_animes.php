@@ -55,7 +55,7 @@ require_once "classes/anime.php";
                 <a class="nav-link" href="/listagem_animes.php">Lista de Animes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/cadastro_anime.html">Cadastrar Animes</a>
+                <a class="nav-link" href="/cadastro_anime.php">Cadastrar Animes</a>
               </li>
             </ul>
           </div>
@@ -65,7 +65,7 @@ require_once "classes/anime.php";
     <div class="container">
       <h1 class="text-center">Listagem de Animes</h1>
       <div class="d-grid gap-2 mb-3 w-80">
-        <a type="button" class="btn btn-outline-dark text-center" href="/cadastro_anime.html">
+        <a type="button" class="btn btn-outline-dark text-center" href="/cadastro_anime.php">
           Novo Anime
         </a>
       </div>
