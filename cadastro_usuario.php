@@ -41,7 +41,7 @@ session_start();
         </div>
         <div class="d-flex flex-column text-center mt-4">
           <button type="submit" class="btn btn-dark mb-2">Cadastrar</button>
-          <a class="text-dark" href="/login.html">Já Tenho Conta</a>
+          <a class="text-dark" href="/login.php">Já Tenho Conta</a>
         </div>
       </form>
       <?php

@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <?php
+session_start();
 require_once "classes/anime.php";
 ?>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>

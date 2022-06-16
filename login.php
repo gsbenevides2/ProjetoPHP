@@ -59,7 +59,7 @@ if (
         </div>
         <div class="d-flex flex-column text-center mt-4">
           <button type="submit" class="btn btn-dark mb-2">Entrar</button>
-          <a class="text-dark" href="/cadastro_usuario.html">Não Tenho Conta</a>
+          <a class="text-dark" href="/cadastro_usuario.php">Não Tenho Conta</a>
         </div>
       </form>
     </div>
